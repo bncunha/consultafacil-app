@@ -9,6 +9,7 @@ import { LoginPage } from '../pages/login/login';
 import { CadastroPage } from '../pages/cadastro/cadastro';
 import { PesquizaPage } from '../pages/pesquiza/pesquiza';
 import { PerfilPage } from '../pages/perfil/perfil';
+import { LocalizacaoPage } from '../pages/localizacao/localizacao';
 
 @Component({
   templateUrl: 'app.html'
@@ -18,16 +19,16 @@ export class MyApp {
 
   rootPage: any = HomePage;
 
-  pages: Array<{title: string, component: any}>;
+  pages: Array<{title: string, component: any, icon : string}>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'Pesquiza', component: PesquizaPage },
-      { title: 'Perfil', component: PerfilPage },
+      { title: 'Home', component: HomePage, icon: 'home' },
+      { title: 'Pesquizar Médico', component: PesquizaPage, icon: 'search' },
+      { title: 'Perfil', component: PerfilPage, icon: 'md-contact' }
       /*{ title: 'List', component: ListPage },
       { title: 'Login', component: LoginPage},
       { title: 'Cadastro', component: CadastroPage}*/
@@ -50,4 +51,6 @@ export class MyApp {
     this.nav.setRoot(page.component);
     console.log(page);
   }
+  
+
 }

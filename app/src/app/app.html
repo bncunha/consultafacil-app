@@ -5,24 +5,10 @@
     </ion-toolbar>
   </ion-header>
 
-  <!--<ion-content>
+  <ion-content>
     <ion-list>
       <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-        <ion-icon name="home"></ion-icon> {{p.title}}
-      </button>
-    </ion-list>
-  </ion-content>-->
-
-  <ion-content >
-    <ion-list>
-      <button menuClose ion-item (click)="openPage({title:'Home', component: HomePage})">
-        <ion-icon name="home"></ion-icon> Home
-      </button>
-      <button menuClose ion-item (click)="openPage({title:'Pesquiza', component: PesquizaPage})">
-        <ion-icon name="search"></ion-icon> Pesquizar Médico
-      </button>
-      <button menuClose ion-item (click)="openPage({title:'Perfil', component: PerfilPage})">
-        <ion-icon name="md-contact"></ion-icon> Perfil
+        <ion-icon name='{{p.icon}}'></ion-icon> {{p.title}}
       </button>
       <button menuClose ion-item >
         <ion-icon name="md-log-out"></ion-icon> Sair

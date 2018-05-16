@@ -12,6 +12,7 @@ import { LoginPage } from '../pages/login/login';
 import { CadastroPage } from '../pages/cadastro/cadastro';
 import { PesquizaPage } from '../pages/pesquiza/pesquiza';
 import { PerfilPage } from '../pages/perfil/perfil';
+import { LocalizacaoPage } from '../pages/localizacao/localizacao';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { PerfilPage } from '../pages/perfil/perfil';
     LoginPage,
     CadastroPage,
     PesquizaPage,
-    PerfilPage
+    PerfilPage,
+    LocalizacaoPage
   ],
   imports: [
     BrowserModule,
@@ -35,7 +37,8 @@ import { PerfilPage } from '../pages/perfil/perfil';
     LoginPage,
     CadastroPage,
     PesquizaPage,
-    PerfilPage
+    PerfilPage,
+    LocalizacaoPage
   ],
   providers: [
     StatusBar,
