@@ -12,11 +12,12 @@ page-home {
         -webkit-overflow-scrolling: touch;
         will-change: scroll-position;
         contain: size style layout;
-        background: #E0FFFF;
+        background: #ffffff;
       }
 
       .badge-md {
         border-radius: 4px;
+        border-color: #000000;
         color: #fff;
         background-color: #51CFB1;
       }
