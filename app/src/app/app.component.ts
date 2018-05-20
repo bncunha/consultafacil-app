@@ -10,6 +10,8 @@ import { CadastroPage } from '../pages/cadastro/cadastro';
 import { PesquizaPage } from '../pages/pesquiza/pesquiza';
 import { PerfilPage } from '../pages/perfil/perfil';
 import { LocalizacaoPage } from '../pages/localizacao/localizacao';
+import { ListarMedicosPage } from '../pages/listar-medicos/listar-medicos';
+import { ModalPage } from '../pages/modal/modal';
 
 @Component({
   templateUrl: 'app.html'
@@ -29,6 +31,7 @@ export class MyApp {
       { title: 'Home', component: HomePage, icon: 'home' },
       { title: 'Pesquizar Médico', component: PesquizaPage, icon: 'search' },
       { title: 'Perfil', component: PerfilPage, icon: 'md-contact' }
+      /*{ title: 'Localização', component: LocalizacaoPage, icon: 'md-map' }
       /*{ title: 'List', component: ListPage },
       { title: 'Login', component: LoginPage},
       { title: 'Cadastro', component: CadastroPage}*/

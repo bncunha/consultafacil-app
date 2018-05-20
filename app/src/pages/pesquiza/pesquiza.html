@@ -7,12 +7,18 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>pesquiza</ion-title>
+    <ion-title>Especialidade</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+
+   <ion-content>
+    <ion-list>
+      <button  ion-item *ngFor="let esp of especialidade" (click)='listaMedicos(esp.medicos)'>{{esp.nome}}</button>
+    </ion-list>
+  </ion-content>
 
 </ion-content>
