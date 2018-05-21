@@ -11,19 +11,21 @@
 <!-- apenas exemplo de como futuramente pode fica -->
 <ion-content padding>
 
+  <div *ngFor="let c of consulta">
   <ion-card>
     <ion-card-header>
       <ion-badge item-end> 
-        <ion-icon name="calendar"></ion-icon> 30/05/2018 14:30hrs
+        <ion-icon name="calendar"></ion-icon> {{c.data}} {{c.hora}}
       </ion-badge>
     </ion-card-header>
     <ion-card-content>
-      Dr. Carlos da Silva<p>
-      Clinico Geral<p>
-      <button ion-button round class="localizacao"><ion-icon name="md-map"> Localização</ion-icon></button>
+      {{c.med}}<p>
+      {{c.espec}}<p>
+      <button ion-button round class="localizacao" ><ion-icon name="md-map" (click)='abrirTela(c.lat ,c.log)'> Localização</ion-icon></button>
       <button ion-button round class="cancelar"><ion-icon name="md-close"> Cancelar</ion-icon></button>
     </ion-card-content>
   </ion-card>
+  </div>
 
   <ion-card>
       <ion-card-header>

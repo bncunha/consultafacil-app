@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { Geolocation } from '@ionic-native/geolocation';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -13,6 +14,8 @@ import { CadastroPage } from '../pages/cadastro/cadastro';
 import { PesquizaPage } from '../pages/pesquiza/pesquiza';
 import { PerfilPage } from '../pages/perfil/perfil';
 import { LocalizacaoPage } from '../pages/localizacao/localizacao';
+import { ListarMedicosPage } from '../pages/listar-medicos/listar-medicos';
+import { ModalPage } from '../pages/modal/modal';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,9 @@ import { LocalizacaoPage } from '../pages/localizacao/localizacao';
     CadastroPage,
     PesquizaPage,
     PerfilPage,
-    LocalizacaoPage
+    LocalizacaoPage,
+    ListarMedicosPage,
+    ModalPage
   ],
   imports: [
     BrowserModule,
@@ -38,12 +43,15 @@ import { LocalizacaoPage } from '../pages/localizacao/localizacao';
     CadastroPage,
     PesquizaPage,
     PerfilPage,
-    LocalizacaoPage
+    LocalizacaoPage,
+    ListarMedicosPage,
+    ModalPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    Geolocation
   ]
 })
 export class AppModule {}
