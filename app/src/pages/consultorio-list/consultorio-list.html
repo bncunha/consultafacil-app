@@ -14,13 +14,13 @@
 
 
 <ion-content padding>
-  <ion-grid>
+  <ion-grid class="table-content">
     <ion-row class="table-header">
       <ion-col col-11>
         <span class="table-title f-16"> Nome fantasia </span>
       </ion-col>
     </ion-row>
-    <ion-row class="table-content" *ngFor="let p of [1,2,3,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4]">
+    <ion-row class="table-body" *ngFor="let p of [1,2,3,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4]">
       <ion-col col-10>
         <span class="f-16"> Nome fantasia </span>
       </ion-col>
@@ -29,4 +29,9 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+
+  <ion-fab class="floating-bottom-right-button">
+    <button ion-fab>  <ion-icon name="md-add"></ion-icon> </button>
+  </ion-fab>
+   
 </ion-content>
