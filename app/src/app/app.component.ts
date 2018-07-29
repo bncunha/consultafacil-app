@@ -4,14 +4,15 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
-import { LoginPage } from '../pages/login/login';
-import { CadastroPage } from '../pages/cadastro/cadastro';
 import { PesquizaPage } from '../pages/pesquiza/pesquiza';
 import { PerfilPage } from '../pages/perfil/perfil';
-import { LocalizacaoPage } from '../pages/localizacao/localizacao';
-import { ListarMedicosPage } from '../pages/listar-medicos/listar-medicos';
-import { ModalPage } from '../pages/modal/modal';
+import { ConsultorioListPage } from '../pages/consultorio-list/consultorio-list';
+// import { ListPage } from '../pages/list/list';
+// import { LoginPage } from '../pages/login/login';
+// import { CadastroPage } from '../pages/cadastro/cadastro';
+// import { LocalizacaoPage } from '../pages/localizacao/localizacao';
+// import { ListarMedicosPage } from '../pages/listar-medicos/listar-medicos';
+// import { ModalPage } from '../pages/modal/modal';
 
 @Component({
   templateUrl: 'app.html'
@@ -22,6 +23,7 @@ export class MyApp {
   rootPage: any = HomePage;
 
   pages: Array<{title: string, component: any, icon : string}>;
+  consultorioPages: Array<{title: string, component: any, icon : string}>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
@@ -36,6 +38,18 @@ export class MyApp {
       { title: 'Login', component: LoginPage},
       { title: 'Cadastro', component: CadastroPage}*/
     ];
+
+    this.consultorioPages = [
+      { title: 'Home', component: HomePage, icon: 'home' },
+      { title: 'Perfil', component: PerfilPage, icon: 'md-contact' },
+      // { title: 'Pesquisar Médico', component: PesquizaPage, icon: 'search' },
+      { title: 'Consultórios', component: ConsultorioListPage, icon: 'medical' },
+      /*{ title: 'Localização', component: LocalizacaoPage, icon: 'md-map' }
+      /*{ title: 'List', component: ListPage },
+      { title: 'Login', component: LoginPage},
+      { title: 'Cadastro', component: CadastroPage}*/
+    ];
+
 
   }
 

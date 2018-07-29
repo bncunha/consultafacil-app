@@ -7,7 +7,12 @@
 
   <ion-content>
     <ion-list>
+      <span> -- *Pacientes*-- </span>
       <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+        <ion-icon name='{{p.icon}}'></ion-icon> {{p.title}}
+      </button>
+      <span> -- *Consultorios*-- </span>
+      <button menuClose ion-item *ngFor="let p of consultorioPages" (click)="openPage(p)">
         <ion-icon name='{{p.icon}}'></ion-icon> {{p.title}}
       </button>
       <button menuClose ion-item >

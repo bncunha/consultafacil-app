@@ -16,6 +16,7 @@ import { PerfilPage } from '../pages/perfil/perfil';
 import { LocalizacaoPage } from '../pages/localizacao/localizacao';
 import { ListarMedicosPage } from '../pages/listar-medicos/listar-medicos';
 import { ModalPage } from '../pages/modal/modal';
+import { ConsultorioListPageModule } from '../pages/consultorio-list/consultorio-list.module';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { ModalPage } from '../pages/modal/modal';
   ],
   imports: [
     BrowserModule,
+    ConsultorioListPageModule,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
