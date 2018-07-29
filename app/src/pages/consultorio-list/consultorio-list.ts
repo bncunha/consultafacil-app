@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ConsultorioAddPage } from '../consultorio-add/consultorio-add';
 
 /**
  * Generated class for the ConsultorioListPage page.
@@ -20,6 +21,11 @@ export class ConsultorioListPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ConsultorioListPage');
+  }
+
+  add() {
+    // direciona para página de adicionar novo consultório
+    this.navCtrl.push(ConsultorioAddPage);
   }
 
 }
