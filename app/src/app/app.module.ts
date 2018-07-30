@@ -17,6 +17,9 @@ import { LocalizacaoPage } from '../pages/localizacao/localizacao';
 import { ListarMedicosPage } from '../pages/listar-medicos/listar-medicos';
 import { ModalPage } from '../pages/modal/modal';
 import { ConsultorioListPageModule } from '../pages/consultorio-list/consultorio-list.module';
+import { ConsultorioProvider } from '../providers/consultorio/consultorio';
+import { BaseProvider } from '../providers/baseProvider';
+import { HttpModule } from '../../node_modules/@angular/http';
 
 @NgModule({
   declarations: [
@@ -29,9 +32,10 @@ import { ConsultorioListPageModule } from '../pages/consultorio-list/consultorio
     PerfilPage,
     LocalizacaoPage,
     ListarMedicosPage,
-    ModalPage
+    ModalPage,
   ],
   imports: [
+    HttpModule,
     BrowserModule,
     ConsultorioListPageModule,
     IonicModule.forRoot(MyApp),
@@ -53,7 +57,9 @@ import { ConsultorioListPageModule } from '../pages/consultorio-list/consultorio
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    Geolocation
+    Geolocation,
+    ConsultorioProvider,
+    BaseProvider
   ]
 })
 export class AppModule {}

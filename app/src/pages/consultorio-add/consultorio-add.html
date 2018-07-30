@@ -10,9 +10,87 @@
     <ion-title> <ion-icon name="md-add"></ion-icon> Novo Consultório</ion-title>
   </ion-navbar>
 
+  <ion-toolbar no-border-top color="light"> 
+    <ion-segment [(ngModel)]="submenu">
+      <ion-segment-button value="geral">
+        Dados Gerais
+      </ion-segment-button>
+      <ion-segment-button value="endereco">
+        Endereços
+      </ion-segment-button>
+      <ion-segment-button value="contato">
+        Contato
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+
 </ion-header>
 
 
 <ion-content padding>
+  <form (ngSubmit)="logForm()">
+    <div [ngSwitch]="submenu">
+      <ion-list *ngSwitchCase="'geral'">
+        <ion-item>
+          <ion-label floating>Razão Social</ion-label>
+          <ion-input type="text" [(ngModel)]="model.razaoSocial" [ngModelOptions]="{standalone: true}"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Nome Fantasia</ion-label>
+          <ion-input type="text" [(ngModel)]="model.nomeFantasia" [ngModelOptions]="{standalone: true}"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>CNPJ</ion-label>
+          <ion-input type="text" [(ngModel)]="model.cnpj" [ngModelOptions]="{standalone: true}"></ion-input>
+        </ion-item>
+      </ion-list>
+      
+      <ion-list *ngSwitchCase="'endereco'">
+        <ion-item>
+          <ion-label floating>Logradouro</ion-label>
+          <ion-input type="text" [(ngModel)]="model.endereco.logradouro" [ngModelOptions]="{standalone: true}"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Número</ion-label>
+          <ion-input type="text" [(ngModel)]="model.endereco.numero" [ngModelOptions]="{standalone: true}"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Bairro</ion-label>
+          <ion-input type="text" [(ngModel)]="model.endereco.bairro" [ngModelOptions]="{standalone: true}"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Cidade</ion-label>
+          <ion-input type="text" [(ngModel)]="model.endereco.cidade" [ngModelOptions]="{standalone: true}"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Estado</ion-label>
+          <ion-input type="text" [(ngModel)]="model.endereco.estado" [ngModelOptions]="{standalone: true}"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>CEP</ion-label>
+          <ion-input type="text" [(ngModel)]="model.endereco.cep" [ngModelOptions]="{standalone: true}"></ion-input>
+        </ion-item>
+      </ion-list>
 
+      <ion-list *ngSwitchCase="'contato'">
+        <ion-item>
+          <ion-label floating>Telefone 1</ion-label>
+          <ion-input type="text" [(ngModel)]="model.telefones[0]" [ngModelOptions]="{standalone: true}"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Telefone 2</ion-label>
+          <ion-input type="text" [(ngModel)]="model.telefones[1]" [ngModelOptions]="{standalone: true}"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>E-mail 1</ion-label>
+          <ion-input type="text" [(ngModel)]="model.emails[0]" [ngModelOptions]="{standalone: true}"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>E-mail 2</ion-label>
+          <ion-input type="text" [(ngModel)]="model.emails[1]" [ngModelOptions]="{standalone: true}"></ion-input>
+        </ion-item>
+      </ion-list>
+    </div>
+    <button ion-button type="submit" block>Adicionar</button>
+  </form>
 </ion-content>

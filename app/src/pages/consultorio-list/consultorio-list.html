@@ -19,13 +19,16 @@
       <ion-col col-11>
         <span class="table-title f-16"> Nome fantasia </span>
       </ion-col>
+      <ion-col col-1>
+        <span class="table-title f-16" (click)="loadAll()"> <ion-icon name="refresh"></ion-icon> </span>
+      </ion-col>
     </ion-row>
-    <ion-row class="table-body" *ngFor="let p of [1,2,3,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4]">
+    <ion-row class="table-body" *ngFor="let item of models">
       <ion-col col-10>
-        <span class="f-16"> Nome fantasia </span>
+        <span class="f-16"> {{item.nomeFantasia? item.nomeFantasia : 'Indefinido'}} </span>
       </ion-col>
       <ion-col col-2>
-        <button ion-button color="danger" small> <ion-icon name="close-circle"></ion-icon> </button>
+        <button ion-button color="danger" small (click)="showConfirm(item)"> <ion-icon name="close-circle"></ion-icon> </button>
       </ion-col>
     </ion-row>
   </ion-grid>
