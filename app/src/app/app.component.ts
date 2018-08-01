@@ -7,6 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { PesquizaPage } from '../pages/pesquiza/pesquiza';
 import { PerfilPage } from '../pages/perfil/perfil';
 import { ConsultorioListPage } from '../pages/consultorio-list/consultorio-list';
+import { LoginPage } from '../pages/login/login';
 // import { ListPage } from '../pages/list/list';
 // import { LoginPage } from '../pages/login/login';
 // import { CadastroPage } from '../pages/cadastro/cadastro';
@@ -20,7 +21,8 @@ import { ConsultorioListPage } from '../pages/consultorio-list/consultorio-list'
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  // rootPage: any = HomePage;
+  rootPage: any = LoginPage;
 
   pages: Array<{title: string, component: any, icon : string}>;
   consultorioPages: Array<{title: string, component: any, icon : string}>;

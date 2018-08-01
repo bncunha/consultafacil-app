@@ -9,7 +9,6 @@ import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { LoginPage } from '../pages/login/login';
 import { CadastroPage } from '../pages/cadastro/cadastro';
 import { PesquizaPage } from '../pages/pesquiza/pesquiza';
 import { PerfilPage } from '../pages/perfil/perfil';
@@ -20,13 +19,13 @@ import { ConsultorioListPageModule } from '../pages/consultorio-list/consultorio
 import { ConsultorioProvider } from '../providers/consultorio/consultorio';
 import { BaseProvider } from '../providers/baseProvider';
 import { HttpModule } from '../../node_modules/@angular/http';
+import { LoginPageModule } from '../pages/login/login.module';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     ListPage,
-    LoginPage,
     CadastroPage,
     PesquizaPage,
     PerfilPage,
@@ -38,6 +37,7 @@ import { HttpModule } from '../../node_modules/@angular/http';
     HttpModule,
     BrowserModule,
     ConsultorioListPageModule,
+    LoginPageModule,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
@@ -45,7 +45,6 @@ import { HttpModule } from '../../node_modules/@angular/http';
     MyApp,
     HomePage,
     ListPage,
-    LoginPage,
     CadastroPage,
     PesquizaPage,
     PerfilPage,
