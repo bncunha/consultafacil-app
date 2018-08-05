@@ -20,6 +20,7 @@ import { ConsultorioProvider } from '../providers/consultorio/consultorio';
 import { BaseProvider } from '../providers/baseProvider';
 import { HttpModule } from '../../node_modules/@angular/http';
 import { LoginPageModule } from '../pages/login/login.module';
+import { PacienteProvider } from '../providers/paciente/paciente';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { LoginPageModule } from '../pages/login/login.module';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     Geolocation,
     ConsultorioProvider,
+    PacienteProvider,
     BaseProvider
   ]
 })

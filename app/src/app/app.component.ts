@@ -10,7 +10,7 @@ import { ConsultorioListPage } from '../pages/consultorio-list/consultorio-list'
 import { LoginPage } from '../pages/login/login';
 // import { ListPage } from '../pages/list/list';
 // import { LoginPage } from '../pages/login/login';
-// import { CadastroPage } from '../pages/cadastro/cadastro';
+import { CadastroPage } from '../pages/cadastro/cadastro';
 // import { LocalizacaoPage } from '../pages/localizacao/localizacao';
 // import { ListarMedicosPage } from '../pages/listar-medicos/listar-medicos';
 // import { ModalPage } from '../pages/modal/modal';
@@ -34,11 +34,11 @@ export class MyApp {
     this.pages = [
       { title: 'Home', component: HomePage, icon: 'home' },
       { title: 'Pesquisar Médico', component: PesquizaPage, icon: 'search' },
-      { title: 'Perfil', component: PerfilPage, icon: 'md-contact' }
+      { title: 'Perfil', component: PerfilPage, icon: 'md-contact' },
       /*{ title: 'Localização', component: LocalizacaoPage, icon: 'md-map' }
       /*{ title: 'List', component: ListPage },
-      { title: 'Login', component: LoginPage},
-      { title: 'Cadastro', component: CadastroPage}*/
+      { title: 'Login', component: LoginPage},*/
+      /*{ title: 'Cadastro', component: CadastroPage, icon:""}*/
     ];
 
     this.consultorioPages = [
