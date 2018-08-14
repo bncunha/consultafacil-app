@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,ViewController } from 'ionic-angular';
+import { AgendarConsultaPage } from '../agendar-consulta/agendar-consulta';
 //import { ViewController } from 'ionic-angular/navigation/view-controller';
 
 /**
@@ -29,6 +30,10 @@ export class ModalPage {
 
   dismiss(){
     this.view.dismiss();
+  }
+
+  agendarConsulta() {
+    this.navCtrl.push(AgendarConsultaPage, {parametro: this.medico});
   }
 
 }

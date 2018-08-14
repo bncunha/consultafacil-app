@@ -21,6 +21,8 @@ import { BaseProvider } from '../providers/baseProvider';
 import { HttpModule } from '../../node_modules/@angular/http';
 import { LoginPageModule } from '../pages/login/login.module';
 import { PacienteProvider } from '../providers/paciente/paciente';
+import { AgendarConsultaPageModule } from '../pages/agendar-consulta/agendar-consulta.module';
+import { NgCalendarModule  } from 'ionic2-calendar';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import { PacienteProvider } from '../providers/paciente/paciente';
     BrowserModule,
     ConsultorioListPageModule,
     LoginPageModule,
+    AgendarConsultaPageModule,
+    NgCalendarModule,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
