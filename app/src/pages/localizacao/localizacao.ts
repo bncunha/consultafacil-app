@@ -44,7 +44,7 @@ export class LocalizacaoPage {
         this.map = new google.maps.Map(document.getElementById('map'), mapOptions);
         this.directionsDisplay.setMap(this.map);
  
-        const marker = new google.maps.Marker({
+        /*const marker =*/ new google.maps.Marker({
           position: this.startPosition,
           map: this.map
         });

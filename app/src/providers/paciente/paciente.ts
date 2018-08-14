@@ -36,4 +36,11 @@ export class PacienteProvider {
     return;
   }
 
+  login(email:string, senha:string): Promise<any>{
+    console.log("etapa 1");
+    console.log("email: " + email);
+    console.log("senha: " + senha);
+    return this.baseProvider.login(email, senha);
+  }
+
 }

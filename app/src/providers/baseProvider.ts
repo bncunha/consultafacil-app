@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http, RequestOptions } from '@angular/http';
+//import { Headers, Http, RequestOptions } from '@angular/http';
+import { Http } from '@angular/http';
 
 @Injectable()
 export class BaseProvider {
@@ -9,7 +10,7 @@ export class BaseProvider {
 
 	public post(url: string, data: any) {
 		return new Promise((resolve, reject) => {
-            const header: Headers = new Headers();
+            //const header: Headers = new Headers();
 			this.http.post(this.serviceUrl + url, data).subscribe((result: any) => {
 				resolve(result.json());
 			},
@@ -54,6 +55,25 @@ export class BaseProvider {
 	public get(url: string) {
 		return new Promise((resolve, reject) => {
 			this.http.get(this.serviceUrl + url).subscribe((result: any) => {
+				resolve(result.json());
+			},
+			err => {
+				console.log(err);
+				reject(err);
+			});
+		});
+	}
+
+
+	public login(email: string, senha: string) {
+
+		console.log("baseProviders");
+		
+		console.log("email: " + email);
+		console.log("senha: " + senha);
+		
+		return new Promise((resolve, reject) => {
+			this.http.post(this.serviceUrl + "paciente/login", {email:email,senha: senha}).subscribe((result: any) => {
 				resolve(result.json());
 			},
 			err => {
