@@ -8,11 +8,11 @@ import { BaseProvider } from '../baseProvider';
   and Angular DI.
 */
 @Injectable()
-export class PacienteProvider {
-  baseUrl: string = "paciente"; //essa é a string para fazer operações no backend
+export class MedicoProvider {
+  baseUrl: string = "medico"; //essa é a string para fazer operações no backend
 
   constructor(private baseProvider: BaseProvider) {
-    console.log('Hello PacienteProvider Provider');
+    console.log('Hello MedicoProvider Provider');
 
   }
 

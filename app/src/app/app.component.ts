@@ -11,6 +11,7 @@ import { LoginPage } from '../pages/login/login';
 // import { ListPage } from '../pages/list/list';
 // import { LoginPage } from '../pages/login/login';
 import { CadastroPage } from '../pages/cadastro/cadastro';
+import { InicioPage } from '../pages/inicio/inicio';
 // import { LocalizacaoPage } from '../pages/localizacao/localizacao';
 // import { ListarMedicosPage } from '../pages/listar-medicos/listar-medicos';
 // import { ModalPage } from '../pages/modal/modal';
@@ -22,7 +23,7 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   // rootPage: any = HomePage;
-  rootPage: any = LoginPage;
+  rootPage: any = InicioPage;
 
   pages: Array<{title: string, component: any, icon : string}>;
   consultorioPages: Array<{title: string, component: any, icon : string}>;

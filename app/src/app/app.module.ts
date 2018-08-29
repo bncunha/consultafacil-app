@@ -23,6 +23,10 @@ import { LoginPageModule } from '../pages/login/login.module';
 import { PacienteProvider } from '../providers/paciente/paciente';
 import { AgendarConsultaPageModule } from '../pages/agendar-consulta/agendar-consulta.module';
 import { NgCalendarModule  } from 'ionic2-calendar';
+import { CadastroMedicoPage  } from '../pages/cadastro-medico/cadastro-medico';
+import { OpcaoCadastroPage } from '../pages/opcao-cadastro/opcao-cadastro';
+import { InicioPage } from '../pages/inicio/inicio';
+
 
 @NgModule({
   declarations: [
@@ -35,6 +39,9 @@ import { NgCalendarModule  } from 'ionic2-calendar';
     LocalizacaoPage,
     ListarMedicosPage,
     ModalPage,
+    CadastroMedicoPage,
+    OpcaoCadastroPage,
+    InicioPage
   ],
   imports: [
     HttpModule,
@@ -55,7 +62,10 @@ import { NgCalendarModule  } from 'ionic2-calendar';
     PerfilPage,
     LocalizacaoPage,
     ListarMedicosPage,
-    ModalPage
+    ModalPage,
+    CadastroMedicoPage,
+    OpcaoCadastroPage,
+    InicioPage
   ],
   providers: [
     StatusBar,

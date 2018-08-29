@@ -18,8 +18,9 @@ import { PacienteProvider } from '../../providers/paciente/paciente';
 })
 export class LoginPage {
   
-  usuario = { email: '', senha: '' };
+  usuario = { email: '', senha: '', tipo: ''};
   resultado: any;
+  url: string;
 
   constructor(
     public navCtrl: NavController, 
@@ -35,7 +36,15 @@ export class LoginPage {
       const loading = this.showLoading()
       loading.present();
 
-      this.provider.login(email, senha).then(result => {
+      
+      if(this.usuario.tipo == 'm')
+        this.url = "medico/login";
+      else
+        this.url = "paciente/login";
+
+
+
+      this.provider.login(email, senha, this.url).then(result => {
           
           loading.dismiss();
 
@@ -58,14 +67,7 @@ export class LoginPage {
         loading.dismiss();      
       });
   }
-  
-  registrar() { // joga para a tela de Cadastro
-    
-    this.navCtrl.push(CadastroPage);
-    
-  }
-
-  
+   
   showLoading() {    
     return this.loadingCtrl.create({
       content: "Carregando...",
@@ -85,7 +87,4 @@ export class LoginPage {
   backPage() {
     this.navCtrl.pop();
   }
-
-
-
 }

@@ -65,7 +65,7 @@ export class BaseProvider {
 	}
 
 
-	public login(email: string, senha: string) {
+	public login(email: string, senha: string, url: string) {
 
 		console.log("baseProviders");
 		
@@ -73,7 +73,7 @@ export class BaseProvider {
 		console.log("senha: " + senha);
 		
 		return new Promise((resolve, reject) => {
-			this.http.post(this.serviceUrl + "paciente/login", {email:email,senha: senha}).subscribe((result: any) => {
+			this.http.post(this.serviceUrl + url , {email:email,senha: senha}).subscribe((result: any) => {
 				resolve(result.json());
 			},
 			err => {

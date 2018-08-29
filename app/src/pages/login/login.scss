@@ -1,5 +1,5 @@
 page-login {
-	.background-login {
+	/*.background-login {
 		opacity: 0.5;
 		background-image: url(../../assets/imgs/login-background.jpg);
 		background-repeat: no-repeat;
@@ -7,20 +7,69 @@ page-login {
 		height: 100%;
 		width: 100%;
 		position: absolute;
-	}
+	}*/
 
-	.login-content {
+	.pagelogin{
 		width: 44vh;
-    height: 44vh;
+		height: 56vh;
+		position: fixed;
+		top: calc(45% - 22vh);
+		left: calc(48% - 22vh);
+		background-color:transparent;
+	   font-style: normal;
+	   
+	}
+	
+	.scroll-content {
+		opacity: 0.8;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		position: absolute;
+		z-index: 1;
+		display: block;
+		overflow-x: hidden;
+		overflow-y: scroll;
+		-webkit-overflow-scrolling: touch;
+		will-change: scroll-position;
+		contain: size style layout;
+		background-image: url(../../assets/imgs/login-background.jpg);
+		background-repeat: no-repeat;
+		background-size: 100% 100%;
+		height: 100%;
+		width: 100%;
+		position: absolute;
+		
+	}
+	.col {
+		padding: 5px;
+		position: relative;
+		width: 100%;
+		margin: 0;
+		min-height: 1px;
+		-webkit-flex-basis: 0;
+		-ms-flex-preferred-size: 0;
+		flex-basis: 0;
+		-webkit-box-flex: 1;
+		-webkit-flex-grow: 1;
+		-ms-flex-positive: 1;
+		flex-grow: 1;
+		max-width: 100%;
+		left: 3.2%;
+	}
+	/*.login-content {
+		width: 44vh;
+    height: 56vh;
     position: fixed;
-    top: calc(50% - 22vh);
+    top: calc(45% - 22vh);
     left: calc(50% - 22vh);
     border-radius: 16px;
     padding: 20px;
     background-color: rgba(11, 57, 68, 0.8);
-	}
+	}*/
 	
-	.login-title {
+/*	.login-title {
 		font-size: 20px;
     color: white;
     text-align: center;
@@ -30,15 +79,20 @@ page-login {
 
 	.text-center {
 		text-align: center;
-	}
+	}*/
 
 	.campo-formulario {
 		background-color: rgba(118, 159, 168, 0);
-		margin-bottom: 5px;
+		margin-bottom: 5px;	
 	}
-}
 
-.scroll-content {
+	.label{
+		color: blue;
+		font-style: normal;
+	}
+/*}
+
+/*.scroll-content {
 	padding: 0px !important;
 	
 }
@@ -57,5 +111,6 @@ hr.separador {
 
 .buttons-login {
 	margin-top: 20px;
-}
+}*/
 
+}
