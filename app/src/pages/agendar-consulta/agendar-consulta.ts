@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Consulta } from '../../models/consulta.model';
 
 
 /**
@@ -15,18 +16,62 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'agendar-consulta.html',
 })
 export class AgendarConsultaPage {
-  medico: any;
-  calendar = {
-    mode: 'month',
-    currentDate: new Date(),
-  }
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.medico = this.navParams.get("parametro");
-    console.log(this.medico);
+
+  model: Consulta = new Consulta();
+  etapa = 'data';
+  horariosDisponiveisManha = [new Date(), new Date(), new Date(), new Date()];
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private ref: ChangeDetectorRef) {
+    this.model.medico = this.navParams.get("parametro");
+    this.model.data = new Date((new Date()).valueOf() + 1000*3600*24); // pega o próximo dia
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AgendarConsultaPage');
+  }
+
+  dateChange(data) {
+    this.model.data = data;
+    console.log(this.model.data);
+  }
+
+  markDisabled (data) {
+    return data < new Date();
+  }
+
+  nextEtapa(etapaSeguinte) {
+    this.etapa = etapaSeguinte;
+  }
+
+  openSelect(select) {
+    select.open();
+  }
+
+  voltarEtapa() {
+    if (this.etapa === 'hora') {
+      this.etapa = 'data';
+    } else if (this.etapa === 'confirmacao') {
+      this.etapa = 'hora';
+    }
+    this.ref.detectChanges();
+  }
+
+  getMonth() {
+    const meses = [
+      'Janeiro',
+      'Fevereiro',
+      'Março',
+      'Abril',
+      'Maio',
+      'Junho',
+      'Julho',
+      'Agosto',
+      'Setembro',
+      'Outubro',
+      'Novembro',
+      'Dezembro'
+    ];
+    return meses[this.model.data.getMonth()] + ' de ' + this.model.data.getFullYear();
   }
 
 }

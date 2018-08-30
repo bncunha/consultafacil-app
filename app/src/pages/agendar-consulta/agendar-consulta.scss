@@ -1,3 +1,44 @@
 page-agendar-consulta {
 
+	.title-text {
+		height: 20px;
+		text-align: center;
+		padding: 30px;
+		font-size: 2em;
+		margin-top: 2em;
+	}
+	
+	.currentMonth {
+		font-size: 1.2em;
+		text-align: center;
+		margin: 10px;
+		color: #2c2cff;
+	}
+	
+	.content-body {
+		padding-top: 6em;
+	}
+
+	.breadcumb {
+		padding: 10px;
+	}
+
+	.button-back {
+		color: #969696
+	}
+
+	.button-back:active {
+		color: #545151;
+	}
+
+	.next-button {
+		position: absolute;
+    bottom: 2em;
+	}
+
+	.center {
+		text-align: center;
+	}
+
+	
 }

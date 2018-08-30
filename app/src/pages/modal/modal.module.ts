@@ -8,6 +8,7 @@ import { AgendarConsultaPageModule } from '../agendar-consulta/agendar-consulta.
     ModalPage,
   ],
   imports: [
+    AgendarConsultaPageModule,
     IonicPageModule.forChild(ModalPage),
   ],
 })

@@ -4,7 +4,7 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
+<ion-header class="color-white">
 
   <ion-navbar>
     <ion-title>Agendar Consulta</ion-title>
@@ -14,16 +14,50 @@
 
 
 <ion-content padding>
-    <calendar [currentDate]="calendar.currentDate"> </calendar>
+  <div class="breadcumb" *ngIf="etapa !== 'data'">
+    <span class="button-back" (click)="voltarEtapa()"> < Voltar etapa</span>
+  </div>
   <form>
-    <ion-item floating>
-      <ion-label>Data</ion-label>
-     <!--  <ion-input type="text" [(ngModel)]="todo.title" name="title"></ion-input> -->
-    </ion-item>
-    <ion-item>
-      <ion-label>Description</ion-label>
-      <!-- <ion-textarea [(ngModel)]="todo.description" name="description"></ion-textarea> -->
-    </ion-item>
-    <button ion-button type="submit" block>Add Todo</button>
+    <div *ngIf="etapa === 'data'">
+      <div class="title-text">
+        <span> Qual é o melhor dia para sua consulta? </span>
+      </div>
+      <div class="content-body">
+        <span class="currentMonth"> {{ getMonth() }} </span>
+          <calendar 
+            [showEventDetail]="false"
+            [currentDate]="model.data"
+            [markDisabled]="markDisabled"
+            (onCurrentDateChanged)="dateChange($event)"> 
+          </calendar>
+      </div>
+      <button ion-button full class="next-button" [disabled]="!model.data || markDisabled(model.data)" (click)="nextEtapa('hora')">Avançar</button>      
+    </div>
+    <div *ngIf="etapa === 'hora'">
+      <div class="title-text">
+        <span> E qual é o melhor horário? </span>
+      </div>
+      <div class="content-body">
+        <ion-row class="center"> 
+          <ion-col> 
+            <button ion-button color="dark" (click)="openSelect(selectManha)"> Manhã </button> 
+          </ion-col>
+          <ion-col> 
+            <button ion-button color="dark"> Tarde </button>
+          </ion-col>
+          <ion-col> 
+            <button ion-button color="dark"> Noite </button>
+          </ion-col>
+        </ion-row>
+        <div class="title-text">
+          <span> {{ model.horario | date: 'HH:mm' }} </span>
+        </div>
+        <ion-select style="display: none" #selectManha [(ngModel)]="model.horario" [ngModelOptions]="{standalone: true}">
+          <ion-option *ngFor="let horario of horariosDisponiveisManha" 
+          [value]="horario">{{ horario | date: 'HH:mm' }}</ion-option>
+        </ion-select>
+      </div>
+      <button ion-button full class="next-button" [disabled]="!model.horario" (click)="nextEtapa('confirmacao')">Avançar</button>      
+    </div>
   </form>
 </ion-content>
