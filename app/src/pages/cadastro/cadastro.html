@@ -12,45 +12,44 @@
 
 </ion-header>
  
-<ion-content class="login-content" padding>
-  <div class="login-box">
+<ion-content no-bounce padding>
+  <div class="cadastro-box">
     
-    <form (ngSubmit)="RegistrarPaciente()">
-      <ion-row>
-        <ion-col>
-          <ion-list inset>
+    <form #form="ngForm">
 
-            <ion-item>
-              <ion-input type="text" [(ngModel)]="model.nome" [ngModelOptions]="{standalone: true}" placeholder="Nome Completo" name="nome"  required></ion-input>
+            <ion-item class="campo-formulario">
+              <ion-label floating style="color:black;font-weight:bolder;font-style: initial;">Nome Completo</ion-label>
+              <ion-input type="text" [(ngModel)]="model.nome" [ngModelOptions]="{standalone: true}"  name="nome"  required></ion-input>
             </ion-item>
 
-            <ion-item>
-                <ion-datetime  [(ngModel)]="model.dataNascimento" [ngModelOptions]="{standalone: true}" placeholder="Data de Nascimento" displayFormat="DD/MM/YYYY" ></ion-datetime>
+            <ion-item class="campo-formulario">
+                <ion-label floating style="color:black;font-weight:bolder;font-style: initial;">Data Nascimento</ion-label>
+                <ion-datetime style="left:1%" [(ngModel)]="model.dataNascimento" [ngModelOptions]="{standalone: true}" displayFormat="DD/MM/YYYY" ></ion-datetime>
             </ion-item>
 
-            <ion-item>
-                <ion-input type="text" [(ngModel)]="model.cpf" [ngModelOptions]="{standalone: true}" placeholder="CPF" name="cpf"  required></ion-input>
+            <ion-item class="campo-formulario">
+                <ion-label floating style="color:black;font-weight:bolder;font-style: initial;">CPF</ion-label>
+                <ion-input type="text" [(ngModel)]="model.cpf" [ngModelOptions]="{standalone: true}" name="cpf"  required></ion-input>
             </ion-item>
 
-            <ion-item>
-              <ion-input type="text" [(ngModel)]="model.telefone" [ngModelOptions]="{standalone: true}" placeholder="Telefone" name="telefone"  required></ion-input>
+            <ion-item class="campo-formulario">
+              <ion-label floating style="color:black;font-weight:bolder;font-style: initial;">Telefone</ion-label>
+              <ion-input type="text" [(ngModel)]="model.telefone" [ngModelOptions]="{standalone: true}" name="telefone"  required></ion-input>
             </ion-item>
 
-            <ion-item>
-              <ion-input type="text" [(ngModel)]="model.email" [ngModelOptions]="{standalone: true}" placeholder="Email" name="email"  required></ion-input>
+            <ion-item class="campo-formulario">
+              <ion-label floating style="color:black;font-weight:bolder;font-style: initial;">Email</ion-label>
+              <ion-input type="text" [(ngModel)]="model.email" [ngModelOptions]="{standalone: true}" name="email"  required></ion-input>
             </ion-item>
             
-            <ion-item>
-              <ion-input type="password" [(ngModel)]="model.senha" [ngModelOptions]="{standalone: true}" placeholder="Password" name="password" required></ion-input>
+            <ion-item class="campo-formulario">
+              <ion-label floating style="color:black;font-weight:bolder;font-style:initial;">Senha</ion-label>
+              <ion-input type="password" [(ngModel)]="model.senha" [ngModelOptions]="{standalone: true}" name="password" required></ion-input>
             </ion-item>
-            
-          </ion-list>
-        </ion-col>
-      </ion-row>
-      
+            <br>
       <ion-row>
-        <ion-col class="signup-col">
-          <button ion-button class="submit-btn" full type="submit" >Register</button>
+        <ion-col text-center>
+          <button ion-button block [disabled]="!form.form.valid" (click)="RegistrarPaciente()">Registar</button>
         </ion-col>
       </ion-row>
       

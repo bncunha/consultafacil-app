@@ -13,34 +13,80 @@
 </ion-header> -->
 
 
-<ion-content padding>
-  <div class="background-login">
-  </div>
-  <div class="login-content">
+<ion-content no-bounce padding>
+  <div class="pagelogin">
+ <!-- <div class="background-login">
+  </div>-->
+  <!--<div class="login-content">
     <ion-row>
       <ion-col col-12 class="login-title">
         LOGIN
         <hr class="separador"/>
       </ion-col>
     </ion-row>
-    <form>           
+    <form #formCtrl="ngForm">           
       <ion-item class="campo-formulario">
         <ion-label floating> E-mail <ion-icon name="md-mail" style="float: right"></ion-icon></ion-label>
-        <ion-input type="text" name="title"></ion-input>
+        <ion-input type="text" name="title" [(ngModel)]="usuario.email" required></ion-input>
       </ion-item>
       <ion-item class="campo-formulario">
         <ion-label class="color-white" floating> Senha  <ion-icon name="md-key" style="float: right"></ion-icon></ion-label>
-        <ion-input type="password" name="description"></ion-input>
+        <ion-input type="password" name="description" [(ngModel)]="usuario.senha" required></ion-input>
+      </ion-item>
+      <ion-item class="campo-formulario">
+          <ion-label floating>Tipo</ion-label>
+          <ion-select [(ngModel)]="usuario.tipo" [ngModelOptions]="{standalone: true}" placeholder="Paciente">
+            <ion-option value="m" selected="true" >Medico</ion-option>
+            <ion-option value="p">Paciente</ion-option>
+          </ion-select>
       </ion-item>
       <ion-row class="buttons-login">
         <ion-col col-6 class="text-center">
           <button ion-button color="light" (click)="registrar()"> CADASTRE-SE </button>
         </ion-col>
         <ion-col col-6 class="text-center">
-          <button ion-button color="light" (click)="login()"> ENTRAR </button>
+          <button ion-button color="light" [disabled]="!formCtrl.form.valid" (click)="login(usuario.email,usuario.senha)"> ENTRAR </button>
         </ion-col>
       </ion-row>
     </form>
-  </div>
+  </div>-->
+
+  <form #formCtrl="ngForm">
+
+    <ion-item class="campo-formulario">
+      <ion-label floating style="color:black;font-weight:bolder;font-style: initial;">Email</ion-label>
+      <ion-input name="email" [(ngModel)]="usuario.email" type="email" required></ion-input>
+    </ion-item>
     
+    <ion-item class="campo-formulario">
+      <ion-label floating style="color:black;font-weight:bolder;font-style: initial;">Senha</ion-label>
+      <ion-input name="senha" [(ngModel)]="usuario.senha" type="password" required></ion-input>
+    </ion-item>  
+    
+    <ion-item class="campo-formulario">
+      <ion-label floating style="color:black;font-weight:bolder;font-style: initial;">Tipo</ion-label>
+      <ion-select [(ngModel)]="usuario.tipo" [ngModelOptions]="{standalone: true}" >
+        <ion-option value="m" selected="true" >Medico</ion-option>
+        <ion-option value="p">Paciente</ion-option>
+      </ion-select>
+    </ion-item> 
+    <br>
+    <ion-row>
+      <ion-col text-center>
+        <button ion-button block [disabled]="!formCtrl.form.valid" (click)="login(usuario.email,usuario.senha)">
+          Entrar
+        </button>
+      </ion-col>
+    </ion-row>
+  
+    <ion-row>
+      <ion-col text-center>
+        <button ion-button clear color="light">
+          Esqueceu a senha?
+        </button>
+      </ion-col>
+    </ion-row>
+  
+  </form>
+</div>
 </ion-content>

@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { CadastroPage } from '../cadastro/cadastro';
+import { PacienteProvider } from '../../providers/paciente/paciente';
 
 /**
  * Generated class for the LoginPage page.
@@ -17,30 +18,73 @@ import { CadastroPage } from '../cadastro/cadastro';
 })
 export class LoginPage {
   
+  usuario = { email: '', senha: '', tipo: ''};
+  resultado: any;
+  url: string;
+
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    ) {
-  }
+    private alert: AlertController,
+    private loadingCtrl: LoadingController,private provider: PacienteProvider) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
 
-  login() {
-    // validações
-    try {
-      this.navCtrl.setRoot(HomePage);
+  login(email, senha){
+      const loading = this.showLoading()
+      loading.present();
 
-    } catch(err) {
       
-    };
+      if(this.usuario.tipo == 'm')
+        this.url = "medico/login";
+      else
+        this.url = "paciente/login";
+
+
+
+      this.provider.login(email, senha, this.url).then(result => {
+          
+          loading.dismiss();
+
+          this.resultado = result;
+          console.log(this.resultado);
+          if(this.resultado.result == true){
+            
+            this.navCtrl.setRoot(HomePage);
+
+          }else{
+            
+            this.usuario.email = "";
+            this.usuario.senha = "";
+            this.showErrorAlert(this.resultado.menssage);
+  
+          }
+          
+      }).catch(err => {      
+        console.log('Erro', err);
+        loading.dismiss();      
+      });
+  }
+   
+  showLoading() {    
+    return this.loadingCtrl.create({
+      content: "Carregando...",
+      // duration: 5000
+    });
   }
 
-  registrar() {
-    
-    this.navCtrl.push(CadastroPage);
-    
+  showErrorAlert(err) {
+    const alert = this.alert.create({
+      title: 'Erro!',
+      subTitle: err,
+      buttons: ['OK']
+    });
+    alert.present();
   }
 
+  backPage() {
+    this.navCtrl.pop();
+  }
 }
