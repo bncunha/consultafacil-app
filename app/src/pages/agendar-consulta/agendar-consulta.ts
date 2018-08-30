@@ -1,6 +1,8 @@
 import { Component, ChangeDetectorRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Consulta } from '../../models/consulta.model';
+import { AlertProvider } from '../../core/alert/alert';
+import { HomePage } from '../home/home';
 
 
 /**
@@ -20,14 +22,21 @@ export class AgendarConsultaPage {
   model: Consulta = new Consulta();
   etapa = 'data';
   horariosDisponiveisManha = [new Date(), new Date(), new Date(), new Date()];
+  horariosDisponiveisTarde = [new Date(), new Date(), new Date(), new Date()];
+  horariosDisponiveisNoite = [new Date(), new Date(), new Date(), new Date()];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private ref: ChangeDetectorRef) {
+  
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    private ref: ChangeDetectorRef,
+    private alert: AlertProvider) {
     this.model.medico = this.navParams.get("parametro");
     this.model.data = new Date((new Date()).valueOf() + 1000*3600*24); // pega o próximo dia
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AgendarConsultaPage');
+    console.log('ionViewDidLoad AgendarConsultaPage', this.model);
   }
 
   dateChange(data) {
@@ -54,6 +63,15 @@ export class AgendarConsultaPage {
       this.etapa = 'hora';
     }
     this.ref.detectChanges();
+  }
+
+  save() {
+    console.log('Salvando consulta');
+    this.alert.successAlert(this.inicio.bind(this));    
+  }
+
+  inicio() {
+    this.navCtrl.popToRoot();
   }
 
   getMonth() {

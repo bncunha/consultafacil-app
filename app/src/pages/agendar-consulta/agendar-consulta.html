@@ -15,7 +15,7 @@
 
 <ion-content padding>
   <div class="breadcumb" *ngIf="etapa !== 'data'">
-    <span class="button-back" (click)="voltarEtapa()"> < Voltar etapa</span>
+    <span class="button-back" (click)="voltarEtapa()"> < Voltar</span>
   </div>
   <form>
     <div *ngIf="etapa === 'data'">
@@ -43,10 +43,10 @@
             <button ion-button color="dark" (click)="openSelect(selectManha)"> Manhã </button> 
           </ion-col>
           <ion-col> 
-            <button ion-button color="dark"> Tarde </button>
+            <button ion-button color="dark" (click)="openSelect(selectTarde)"> Tarde </button>
           </ion-col>
           <ion-col> 
-            <button ion-button color="dark"> Noite </button>
+            <button ion-button color="dark" (click)="openSelect(selectNoite)"> Noite </button>
           </ion-col>
         </ion-row>
         <div class="title-text">
@@ -56,8 +56,87 @@
           <ion-option *ngFor="let horario of horariosDisponiveisManha" 
           [value]="horario">{{ horario | date: 'HH:mm' }}</ion-option>
         </ion-select>
+        <ion-select style="display: none" #selectTarde [(ngModel)]="model.horario" [ngModelOptions]="{standalone: true}">
+          <ion-option *ngFor="let horario of horariosDisponiveisTarde" 
+          [value]="horario">{{ horario | date: 'HH:mm' }}</ion-option>
+        </ion-select>
+        <ion-select style="display: none" #selectNoite [(ngModel)]="model.horario" [ngModelOptions]="{standalone: true}">
+          <ion-option *ngFor="let horario of horariosDisponiveisNoite" 
+          [value]="horario">{{ horario | date: 'HH:mm' }}</ion-option>
+        </ion-select>
       </div>
       <button ion-button full class="next-button" [disabled]="!model.horario" (click)="nextEtapa('confirmacao')">Avançar</button>      
+    </div>
+    <div *ngIf="etapa === 'confirmacao'">
+      <div class="title-text">
+        <span> Confirmando sua consulta... </span>
+      </div>
+      <div class="content-body">
+
+        <ion-row> 
+          <ion-col> 
+            <span class="title-table"> Médico(a): </span>
+          </ion-col>
+          <ion-col> 
+            <span> {{ model.medico.nome }}</span>
+          </ion-col>
+        </ion-row>
+
+        <ion-row> 
+          <ion-col> 
+            <span class="title-table"> Especialidade: </span>
+          </ion-col>
+          <ion-col> 
+            <span> {{ model.medico.esp }}</span>
+          </ion-col>
+        </ion-row>
+
+        <ion-row> 
+          <ion-col> 
+            <span class="title-table"> Consultório: </span>
+          </ion-col>
+          <ion-col> 
+            <span> {{ model.medico.clin }}</span>
+          </ion-col>
+        </ion-row>
+
+        <ion-row> 
+          <ion-col> 
+            <span class="title-table"> Endereço: </span>
+          </ion-col>
+          <ion-col> 
+            <span> {{ model.medico.end }}</span>
+          </ion-col>
+        </ion-row>
+
+        <ion-row> 
+          <ion-col> 
+            <span class="title-table"> Data: </span>
+          </ion-col>
+          <ion-col> 
+            <span> {{ model.data | date: 'dd/MM/yyyy' }}</span>
+          </ion-col>
+        </ion-row>
+
+        <ion-row> 
+          <ion-col> 
+            <span class="title-table"> Horário: </span>
+          </ion-col>
+          <ion-col> 
+            <span> {{ model.horario | date: 'HH/mm' }}</span>
+          </ion-col>
+        </ion-row>
+
+        <ion-row> 
+          <ion-col> 
+            <span class="title-table"> Valor(R$): </span>
+          </ion-col>
+          <ion-col> 
+            <span> {{ model.medico.valor }}</span>
+          </ion-col>
+        </ion-row>
+        <button ion-button full class="next-button" [disabled]="!model.horario" (click)="save()">Agendar consulta</button>      
+      </div>
     </div>
   </form>
 </ion-content>

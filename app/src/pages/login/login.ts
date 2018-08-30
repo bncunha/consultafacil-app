@@ -33,39 +33,40 @@ export class LoginPage {
   }
 
   login(email, senha){
-      const loading = this.showLoading()
-      loading.present();
+    this.navCtrl.setRoot(HomePage);
+    // const loading = this.showLoading()
+    // loading.present();
 
-      
-      if(this.usuario.tipo == 'm')
-        this.url = "medico/login";
-      else
-        this.url = "paciente/login";
+    
+    // if(this.usuario.tipo == 'm')
+    //   this.url = "medico/login";
+    // else
+    //   this.url = "paciente/login";
 
 
 
-      this.provider.login(email, senha, this.url).then(result => {
+    // this.provider.login(email, senha, this.url).then(result => {
+        
+    //     loading.dismiss();
+
+    //     this.resultado = result;
+    //     console.log(this.resultado);
+    //     if(this.resultado.result == true){
           
-          loading.dismiss();
+    //       this.navCtrl.setRoot(HomePage);
 
-          this.resultado = result;
-          console.log(this.resultado);
-          if(this.resultado.result == true){
-            
-            this.navCtrl.setRoot(HomePage);
-
-          }else{
-            
-            this.usuario.email = "";
-            this.usuario.senha = "";
-            this.showErrorAlert(this.resultado.menssage);
-  
-          }
+    //     }else{
           
-      }).catch(err => {      
-        console.log('Erro', err);
-        loading.dismiss();      
-      });
+    //       this.usuario.email = "";
+    //       this.usuario.senha = "";
+    //       this.showErrorAlert(this.resultado.menssage);
+
+    //     }
+        
+    // }).catch(err => {      
+    //   console.log('Erro', err);
+    //   loading.dismiss();      
+    // });
   }
    
   showLoading() {    
