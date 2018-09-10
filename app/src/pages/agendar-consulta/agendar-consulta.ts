@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Consulta } from '../../models/consulta.model';
 import { AlertProvider } from '../../core/alert/alert';
 import { HomePage } from '../home/home';
+import { UserLoggedProvider } from '../../providers/user-logged/user-logged';
 
 
 /**
@@ -30,13 +31,15 @@ export class AgendarConsultaPage {
     public navCtrl: NavController, 
     public navParams: NavParams, 
     private ref: ChangeDetectorRef,
-    private alert: AlertProvider) {
+    private alert: AlertProvider,
+    private userLogged: UserLoggedProvider) {
     this.model.medico = this.navParams.get("parametro");
     this.model.data = new Date((new Date()).valueOf() + 1000*3600*24); // pega o próximo dia
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AgendarConsultaPage', this.model);
+    console.log('Usuario Logado', this.userLogged.getUsuario());
   }
 
   dateChange(data) {

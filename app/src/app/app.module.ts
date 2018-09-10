@@ -26,7 +26,8 @@ import { NgCalendarModule  } from 'ionic2-calendar';
 import { CadastroMedicoPage  } from '../pages/cadastro-medico/cadastro-medico';
 import { OpcaoCadastroPage } from '../pages/opcao-cadastro/opcao-cadastro';
 import { InicioPage } from '../pages/inicio/inicio';
-import { AlertProvider } from '../providers/alert/alert';
+import { AlertProvider } from '../core/alert/alert';
+import { UserLoggedProvider } from '../providers/user-logged/user-logged';
 
 
 @NgModule({
@@ -76,7 +77,8 @@ import { AlertProvider } from '../providers/alert/alert';
     ConsultorioProvider,
     PacienteProvider,
     BaseProvider,
-    AlertProvider
+    AlertProvider,
+    UserLoggedProvider,
   ]
 })
 export class AppModule {}

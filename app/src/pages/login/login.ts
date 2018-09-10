@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, LoadingController, AlertController
 import { HomePage } from '../home/home';
 import { CadastroPage } from '../cadastro/cadastro';
 import { PacienteProvider } from '../../providers/paciente/paciente';
+import { UserLoggedProvider } from '../../providers/user-logged/user-logged';
 
 /**
  * Generated class for the LoginPage page.
@@ -26,47 +27,48 @@ export class LoginPage {
     public navCtrl: NavController, 
     public navParams: NavParams,
     private alert: AlertController,
-    private loadingCtrl: LoadingController,private provider: PacienteProvider) {}
+    private loadingCtrl: LoadingController,private provider: PacienteProvider,
+    private userLogged: UserLoggedProvider) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
 
   login(email, senha){
-    this.navCtrl.setRoot(HomePage);
-    // const loading = this.showLoading()
-    // loading.present();
+    // this.navCtrl.setRoot(HomePage);
+    const loading = this.showLoading()
+    loading.present();
 
     
-    // if(this.usuario.tipo == 'm')
-    //   this.url = "medico/login";
-    // else
-    //   this.url = "paciente/login";
+    if(this.usuario.tipo == 'm')
+      this.url = "medico/login";
+    else
+      this.url = "paciente/login";
 
 
 
-    // this.provider.login(email, senha, this.url).then(result => {
+    this.provider.login(email, senha, this.url).then(result => {
         
-    //     loading.dismiss();
+        loading.dismiss();
 
-    //     this.resultado = result;
-    //     console.log(this.resultado);
-    //     if(this.resultado.result == true){
+        this.resultado = result;
+        console.log(this.resultado);
+        if(this.resultado.result == true){
+          this.userLogged.setUsuario(result.user, this.usuario.tipo);
+          this.navCtrl.setRoot(HomePage);
+
+        }else{
           
-    //       this.navCtrl.setRoot(HomePage);
+          this.usuario.email = "";
+          this.usuario.senha = "";
+          this.showErrorAlert(this.resultado.menssage);
 
-    //     }else{
-          
-    //       this.usuario.email = "";
-    //       this.usuario.senha = "";
-    //       this.showErrorAlert(this.resultado.menssage);
-
-    //     }
+        }
         
-    // }).catch(err => {      
-    //   console.log('Erro', err);
-    //   loading.dismiss();      
-    // });
+    }).catch(err => {      
+      console.log('Erro', err);
+      loading.dismiss();      
+    });
   }
    
   showLoading() {    

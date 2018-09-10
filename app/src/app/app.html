@@ -6,16 +6,19 @@
   </ion-header>
 
   <ion-content>
-    <ion-list>
-      <span> -- *Pacientes*-- </span>
+    <ion-list *ngIf="userLogged.tipo === 'p'">
       <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
         <ion-icon name='{{p.icon}}'></ion-icon> {{p.title}}
       </button>
-      <span> -- *Consultorios*-- </span>
+      <button menuClose ion-item (click)="sair()" >
+        <ion-icon name="md-log-out"></ion-icon> Sair
+      </button>
+    </ion-list>
+    <ion-list *ngIf="userLogged.tipo === 'm'">
       <button menuClose ion-item *ngFor="let p of consultorioPages" (click)="openPage(p)">
         <ion-icon name='{{p.icon}}'></ion-icon> {{p.title}}
       </button>
-      <button menuClose ion-item >
+      <button menuClose ion-item (click)="sair()" >
         <ion-icon name="md-log-out"></ion-icon> Sair
       </button>
     </ion-list>

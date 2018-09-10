@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
 import { ListarMedicosPage } from '../listar-medicos/listar-medicos';
+import { UserLoggedProvider } from '../../providers/user-logged/user-logged';
 
 /**
  * Generated class for the PesquizaPage page.
@@ -18,7 +19,8 @@ export class PesquizaPage {
 
   especialidade: Array<{nome: string, medicos: any}>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public platform: Platform) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public platform: Platform,
+  private userLogged: UserLoggedProvider) {
     this.especialidade = [
       {nome:'Alergia ',medicos:[{nome:'Drª. Maria',esp:'Alergista',est:5,avatar:'../assets/imgs/img_avatar2.png',valor:'70',clin:'Clinica Morada',end:'Rua almirante nº 10, Alvorada, Vila Velha'},{nome:'Drª. Laura',esp:'Alergista',est:4,avatar:'../assets/imgs/img_avatar2.png',valor:'90',clin:'Clinica Saúde +',end:'Rua cascata nº 2, Campo Grande, Cariacica'}]},
       {nome:'Cardiologia',medicos:[{nome:'Dr. Marcos',est:4,esp:'Cardiologista',avatar:'../assets/imgs/img_avatar.png',valor:'100',clin:'Clinica Coração Bom',end:'Rua estrela nº 5, Praia da Costa, Vila Velha'},{nome:'Drª. Penha',est:5,esp:'Cardiologista',avatar:'../assets/imgs/img_avatar2.png',valor:'95',clin:'Clinica Morada',end:'Rua almirante nº 10, Alvorada, Vila Velha'}]},
@@ -32,6 +34,7 @@ export class PesquizaPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PesquizaPage');
+    console.log('Usuario logado', this.userLogged.getUsuario());
   }
 
   listaMedicos(medicos){
