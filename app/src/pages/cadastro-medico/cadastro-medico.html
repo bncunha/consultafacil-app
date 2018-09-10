@@ -13,18 +13,73 @@
 </ion-header>
 
 
-<ion-content padding>
 
-    <form >
-        <ion-item>
-          <ion-label>Todo</ion-label>
-          <ion-input type="text"  name="title"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label>Description</ion-label>
-          <ion-textarea name="description"></ion-textarea>
-        </ion-item>
-        <button ion-button type="submit" block>Add Todo</button>
+<ion-content no-bounce padding>
+  <div class="cadastro-box">
+    
+    <form #form="ngForm">
+
+            <ion-item class="campo-formulario">
+              <ion-label floating style="color:black;font-weight:bolder;font-style: initial;">Nome Completo</ion-label>
+              <ion-input type="text" [(ngModel)]="model.nome" [ngModelOptions]="{standalone: true}"  name="nome"  required></ion-input>
+            </ion-item>
+
+            <ion-item class="campo-formulario">
+                <ion-label floating style="color:black;font-weight:bolder;font-style: initial;">Data Nascimento</ion-label>
+                <ion-datetime style="left:1%" [(ngModel)]="model.dataNascimento" [ngModelOptions]="{standalone: true}" displayFormat="DD/MM/YYYY" ></ion-datetime>
+            </ion-item>
+
+            <ion-item class="campo-formulario">
+                <ion-label floating style="color:black;font-weight:bolder;font-style: initial;">CPF</ion-label>
+                <ion-input type="text" [(ngModel)]="model.cpf" [ngModelOptions]="{standalone: true}" name="cpf"  required></ion-input>
+            </ion-item>
+
+            <ion-item class="campo-formulario">
+              <ion-label floating style="color:black;font-weight:bolder;font-style: initial;">Telefone</ion-label>
+              <ion-input type="tel" [(ngModel)]="model.telefone" [ngModelOptions]="{standalone: true}" name="telefone"  required></ion-input>
+            </ion-item>
+
+            <ion-item class="campo-formulario">
+              <ion-label floating style="color:black;font-weight:bolder;font-style: initial;">Email</ion-label>
+              <ion-input type="email" [(ngModel)]="model.email" [ngModelOptions]="{standalone: true}" name="email"  required></ion-input>
+            </ion-item>
+            
+            <ion-item class="campo-formulario">
+              <ion-label floating style="color:black;font-weight:bolder;font-style:initial;">Senha</ion-label>
+              <ion-input type="password" [(ngModel)]="model.senha" [ngModelOptions]="{standalone: true}" name="password" required></ion-input>
+            </ion-item>
+
+            <ion-item class="campo-formulario">
+              <ion-label floating style="color:black;font-weight:bolder;font-style:initial;">Nº CRM</ion-label>
+              <ion-input type="number" [(ngModel)]="model.numeroCRM" [ngModelOptions]="{standalone: true}" name="crm" required></ion-input>
+            </ion-item>
+
+            <ion-item class="campo-formulario">
+              <ion-label floating style="color:black;font-weight:bolder;font-style: initial;">Data Inscrição CRM</ion-label>
+              <ion-datetime style="left:1%" [(ngModel)]="model.dataInscricaoCRM" [ngModelOptions]="{standalone: true}" displayFormat="DD/MM/YYYY" ></ion-datetime>
+            </ion-item>
+
+
+            <ion-item class="campo-formulario">
+              <ion-label floating style="color:black;font-weight:bolder;font-style:initial;">Validade CRM</ion-label>
+              <ion-input type="number" [(ngModel)]="model.periodovalidadeCRM" [ngModelOptions]="{standalone: true}" name="Validadecrm" required></ion-input>
+            </ion-item>
+
+            <ion-item class="campo-formulario">
+              <ion-label floating style="color:black;font-weight:bolder;font-style: initial;">Especialidade</ion-label>
+              <ion-select [(ngModel)]="model.especialidades" multiple="true" [ngModelOptions]="{standalone: true}" >
+              <ion-option *ngFor="let esp of especialidade" value='{{ esp.nome }}'  >{{ esp.nome}}</ion-option>
+                
+              </ion-select>
+            </ion-item> 
+
+            <br>
+      <ion-row>
+        <ion-col text-center>
+          <button ion-button block [disabled]="!form.form.valid" (click)="RegistrarMedico()">Registar</button>
+        </ion-col>
+      </ion-row>
+      
     </form>
-
+  </div>
 </ion-content>

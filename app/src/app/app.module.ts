@@ -28,6 +28,7 @@ import { OpcaoCadastroPage } from '../pages/opcao-cadastro/opcao-cadastro';
 import { InicioPage } from '../pages/inicio/inicio';
 import { AlertProvider } from '../core/alert/alert';
 import { UserLoggedProvider } from '../providers/user-logged/user-logged';
+import { MedicoProvider } from '../providers/medico/medico';
 
 
 @NgModule({
@@ -79,6 +80,7 @@ import { UserLoggedProvider } from '../providers/user-logged/user-logged';
     BaseProvider,
     AlertProvider,
     UserLoggedProvider,
+    MedicoProvider
   ]
 })
 export class AppModule {}
