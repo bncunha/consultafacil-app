@@ -10,8 +10,8 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class UserLoggedProvider {
 
-  private usuario: any;
-  private tipo: string;
+  public usuario: any;
+  public tipo: string;
 
   constructor() {
     console.log('Hello UserLoggedProvider Provider');
