@@ -1,4 +1,4 @@
-import { AlertController } from 'ionic-angular';
+import { AlertController, LoadingController } from 'ionic-angular';
 import { Injectable } from '@angular/core';
 
 /*
@@ -10,8 +10,11 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class AlertProvider {
   alert: any;
+  loading: any;
 
-  constructor(public alertCtrl: AlertController) {
+  constructor(
+    public alertCtrl: AlertController,
+    public loadingCtrl: LoadingController) {
 
   }
 
@@ -29,10 +32,46 @@ export class AlertProvider {
     this.alert.present();
   }
 
+  errorAlert(callback, title?, subTitle?) {
+    const _title = title ? title : 'Erro!';
+    const _subTitle = subTitle ?  subTitle : 'Operação não concluída!';
+    this.alert = this.alertCtrl.create({
+      title: _title,
+      subTitle: _subTitle,
+      buttons: [{
+        text: 'Ok!',
+        handler: callback
+      }],
+    });
+    this.alert.present();
+  }
+
   destroyAlert() {
     if (alert) {
       this.alert.destroyAlert();
     }
   }
+
+  showLoading() {
+    this.loading = this.loadingCtrl.create({
+      spinner: 'crescent',
+      content: 'Carregando...'
+    });
+  
+    this.loading.present();
+  
+    setTimeout(() => {
+      if (this.loading) {
+        this.loading.dismiss();
+      }
+    }, 20000);
+  }
+
+  hideLoading() {
+    if (this.loading) {
+      this.loading.dismiss();
+    }
+  }
+  
 
 }

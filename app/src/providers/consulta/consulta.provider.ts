@@ -2,17 +2,17 @@ import { Injectable } from '@angular/core';
 import { BaseProvider } from '../baseProvider';
 
 /*
-  Generated class for the ConsultorioProvider provider.
+  Generated class for the consultaProvider provider.
 
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
 */
 @Injectable()
-export class ConsultorioProvider {
-  baseUrl: string = "consultorio"; //essa é a string para fazer operações no backend
+export class ConsultaProvider {
+  baseUrl: string = "consulta"; //essa é a string para fazer operações no backend
 
   constructor(private baseProvider: BaseProvider) {
-    console.log('Hello ConsultorioProvider Provider');
+    console.log('Hello consultaProvider Provider');
 
   }
 

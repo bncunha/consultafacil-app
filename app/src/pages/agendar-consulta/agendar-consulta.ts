@@ -4,6 +4,7 @@ import { Consulta } from '../../models/consulta.model';
 import { AlertProvider } from '../../core/alert/alert';
 import { HomePage } from '../home/home';
 import { UserLoggedProvider } from '../../providers/user-logged/user-logged';
+import { ConsultaProvider } from '../../providers/consulta/consulta.provider';
 
 
 /**
@@ -22,9 +23,9 @@ export class AgendarConsultaPage {
 
   model: Consulta = new Consulta();
   etapa = 'data';
-  horariosDisponiveisManha = [new Date(), new Date(), new Date(), new Date()];
-  horariosDisponiveisTarde = [new Date(), new Date(), new Date(), new Date()];
-  horariosDisponiveisNoite = [new Date(), new Date(), new Date(), new Date()];
+  horariosDisponiveisManha = [new Date().setHours(8, 0, 0), new Date().setHours(9, 0, 0), new Date().setHours(10, 0, 0), new Date().setHours(11, 0, 0)];
+  horariosDisponiveisTarde = [new Date().setHours(13, 0, 0), new Date().setHours(14, 0, 0), new Date().setHours(15, 0, 0), new Date().setHours(16, 0, 0)];
+  horariosDisponiveisNoite = [new Date().setHours(18, 0, 0), new Date().setHours(19, 0, 0)];
 
   
   constructor(
@@ -32,7 +33,8 @@ export class AgendarConsultaPage {
     public navParams: NavParams, 
     private ref: ChangeDetectorRef,
     private alert: AlertProvider,
-    private userLogged: UserLoggedProvider) {
+    private userLogged: UserLoggedProvider,
+    private consultaService: ConsultaProvider) {
     this.model.medico = this.navParams.get("parametro");
     this.model.data = new Date((new Date()).valueOf() + 1000*3600*24); // pega o próximo dia
   }
@@ -44,7 +46,6 @@ export class AgendarConsultaPage {
 
   dateChange(data) {
     this.model.data = data;
-    console.log(this.model.data);
   }
 
   markDisabled (data) {
@@ -69,8 +70,19 @@ export class AgendarConsultaPage {
   }
 
   save() {
-    console.log('Salvando consulta');
-    this.alert.successAlert(this.inicio.bind(this));    
+    console.log('Salvando consulta', this.model);
+    this.model.paciente = this.userLogged.usuario;
+    console.log(this.model.horario);
+    this.alert.showLoading();
+    this.consultaService.add(this.model.toApi()).then(result => {
+      console.log(result);
+      this.alert.hideLoading();
+      this.alert.successAlert(this.inicio.bind(this));
+    }).catch(err => {
+      console.log('Erro', err);
+      this.alert.hideLoading();
+      this.alert.errorAlert(this.inicio.bind(this));
+    });
   }
 
   inicio() {
