@@ -13,6 +13,7 @@ import { LoginPage } from '../pages/login/login';
 import { CadastroPage } from '../pages/cadastro/cadastro';
 import { InicioPage } from '../pages/inicio/inicio';
 import { UserLoggedProvider } from '../providers/user-logged/user-logged';
+import { PerfilPacientePage } from '../pages/perfil-paciente/perfil-paciente';
 // import { LocalizacaoPage } from '../pages/localizacao/localizacao';
 // import { ListarMedicosPage } from '../pages/listar-medicos/listar-medicos';
 // import { ModalPage } from '../pages/modal/modal';
@@ -37,7 +38,7 @@ export class MyApp {
     this.pages = [
       { title: 'Home', component: HomePage, icon: 'home' },
       { title: 'Pesquisar Médico', component: PesquizaPage, icon: 'search' },
-      { title: 'Perfil', component: PerfilPage, icon: 'md-contact' },
+      { title: 'Perfil', component: PerfilPacientePage, icon: 'md-contact' },
     ];
 
     this.consultorioPages = [
@@ -62,7 +63,10 @@ export class MyApp {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     // this.nav.setRoot(page.component);
-    this.nav.push(page.component);
+    if(page.title == "Home")
+      this.nav.setRoot(page.component)
+    else
+      this.nav.push(page.component);
     console.log(page);
   }
 

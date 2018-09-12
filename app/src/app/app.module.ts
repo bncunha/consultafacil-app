@@ -29,7 +29,7 @@ import { InicioPage } from '../pages/inicio/inicio';
 import { AlertProvider } from '../core/alert/alert';
 import { UserLoggedProvider } from '../providers/user-logged/user-logged';
 import { MedicoProvider } from '../providers/medico/medico';
-
+import { PerfilPacientePage } from '../pages/perfil-paciente/perfil-paciente'
 
 @NgModule({
   declarations: [
@@ -44,7 +44,8 @@ import { MedicoProvider } from '../providers/medico/medico';
     ModalPage,
     CadastroMedicoPage,
     OpcaoCadastroPage,
-    InicioPage
+    InicioPage,
+    PerfilPacientePage
   ],
   imports: [
     HttpModule,
@@ -68,7 +69,8 @@ import { MedicoProvider } from '../providers/medico/medico';
     ModalPage,
     CadastroMedicoPage,
     OpcaoCadastroPage,
-    InicioPage
+    InicioPage,
+    PerfilPacientePage
   ],
   providers: [
     StatusBar,
