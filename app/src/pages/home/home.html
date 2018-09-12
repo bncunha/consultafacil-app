@@ -11,18 +11,19 @@
 <!-- apenas exemplo de como futuramente pode fica -->
 <ion-content padding>
 
-  <div *ngFor="let c of consulta">
+  <div *ngFor="let c of consultas">
   <ion-card>
     <ion-card-header>
       <ion-badge item-end> 
-        <ion-icon name="calendar"></ion-icon> {{c.data}} {{c.hora}}
+        <ion-icon name="calendar"></ion-icon> {{ c.data | date: 'dd/MM'}} {{ c.horario }}hrs
       </ion-badge>
     </ion-card-header>
     <ion-card-content>
-      {{c.med}}<p>
-      {{c.espec}}<p>
-      <button ion-button round class="localizacao" ><ion-icon name="md-map" (click)='abrirTela(c.lat ,c.log)'> Localização</ion-icon></button>
-      <button ion-button round class="cancelar"><ion-icon name="md-close"> Cancelar</ion-icon></button>
+      <span class="title"> Consultório: </span> <span class="simple-text"> {{ c.consultorio?.nomeFantasia}} </span> <br/>
+      <span class="title"> Médico(a): </span> <span class="simple-text"> Dr. {{ c.medico?.nome }} </span> <br/>
+      <span class="title"> Especialidade: </span> <span class="simple-text"> {{ c.especialidade }} </span> <br/>
+      <button ion-button round small (click)='abrirTela(-20.3184527 ,-40.4246079)' ><ion-icon name="md-map"></ion-icon> &nbsp; Localização</button>
+      <button ion-button round small *ngIf="c.situacao === 0" (click)="cancelarConsulta(c)" color="danger"><ion-icon name="md-close"></ion-icon> &nbsp; Cancelar</button>
     </ion-card-content>
   </ion-card>
   </div>

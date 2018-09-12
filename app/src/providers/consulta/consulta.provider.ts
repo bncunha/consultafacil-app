@@ -33,7 +33,15 @@ export class ConsultaProvider {
   }
 
   update(model: any): Promise<any> {
-    return;
+    return this.baseProvider.put(`${this.baseUrl}/${model.id}`, model);
+  }
+
+  getByPaciente(idPaciente: string): Promise<any> {
+    return this.baseProvider.post(`${this.baseUrl}/bypaciente/${idPaciente}`, null);
+  }
+
+  getByMeidco(idMedico: string): Promise<any> {
+    return this.baseProvider.post(`${this.baseUrl}/bymedico/${idMedico}`, null);
   }
 
 }

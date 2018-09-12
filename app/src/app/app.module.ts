@@ -29,6 +29,7 @@ import { InicioPage } from '../pages/inicio/inicio';
 import { AlertProvider } from '../core/alert/alert';
 import { UserLoggedProvider } from '../providers/user-logged/user-logged';
 import { MedicoProvider } from '../providers/medico/medico';
+import { ConsultaProvider } from '../providers/consulta/consulta.provider';
 
 
 @NgModule({
@@ -80,7 +81,9 @@ import { MedicoProvider } from '../providers/medico/medico';
     BaseProvider,
     AlertProvider,
     UserLoggedProvider,
-    MedicoProvider
+    MedicoProvider,
+    ConsultaProvider,
+    UserLoggedProvider
   ]
 })
 export class AppModule {}
