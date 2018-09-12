@@ -29,7 +29,13 @@ import { InicioPage } from '../pages/inicio/inicio';
 import { AlertProvider } from '../core/alert/alert';
 import { UserLoggedProvider } from '../providers/user-logged/user-logged';
 import { MedicoProvider } from '../providers/medico/medico';
+
+<<<<<<< HEAD
 import { PerfilPacientePage } from '../pages/perfil-paciente/perfil-paciente'
+=======
+import { ConsultaProvider } from '../providers/consulta/consulta.provider';
+
+>>>>>>> master
 
 @NgModule({
   declarations: [
@@ -82,7 +88,9 @@ import { PerfilPacientePage } from '../pages/perfil-paciente/perfil-paciente'
     BaseProvider,
     AlertProvider,
     UserLoggedProvider,
-    MedicoProvider
+    MedicoProvider,
+    ConsultaProvider,
+    UserLoggedProvider
   ]
 })
 export class AppModule {}

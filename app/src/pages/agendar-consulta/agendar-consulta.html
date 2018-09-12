@@ -123,18 +123,18 @@
             <span class="title-table"> Horário: </span>
           </ion-col>
           <ion-col> 
-            <span> {{ model.horario | date: 'HH/mm' }}</span>
+            <span> {{ model.horario | date: 'HH:mm' }}</span>
           </ion-col>
         </ion-row>
 
-        <ion-row> 
+        <!-- <ion-row> 
           <ion-col> 
             <span class="title-table"> Valor(R$): </span>
           </ion-col>
           <ion-col> 
             <span> {{ model.medico.valor }}</span>
           </ion-col>
-        </ion-row>
+        </ion-row> -->
         <button ion-button full class="next-button" [disabled]="!model.horario" (click)="save()">Agendar consulta</button>      
       </div>
     </div>

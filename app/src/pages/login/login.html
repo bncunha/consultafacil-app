@@ -74,7 +74,7 @@
     <br>
     <ion-row>
       <ion-col text-center>
-        <button ion-button block [disabled]="!formCtrl.form.valid" (click)="login(usuario.email,usuario.senha)">
+        <button ion-button block [disabled]="isValid()" (click)="login(usuario.email,usuario.senha)">
           Entrar
         </button>
       </ion-col>

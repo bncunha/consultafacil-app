@@ -32,43 +32,42 @@ export class LoginPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
+    this.usuario.email = 'rocks.bn@gmail.com';
+    this.usuario.senha = '123';
+    this.usuario.tipo = 'p';
   }
 
   login(email, senha){
     // this.navCtrl.setRoot(HomePage);
-    const loading = this.showLoading()
-    loading.present();
-
-    
-    if(this.usuario.tipo == 'm')
-      this.url = "medico/login";
-    else
-      this.url = "paciente/login";
-
-
-
-    this.provider.login(email, senha, this.url).then(result => {
-        
-        loading.dismiss();
-
-        this.resultado = result;
-        console.log(this.resultado);
-        if(this.resultado.result == true){
-          this.userLogged.setUsuario(result.user, this.usuario.tipo);
-          this.navCtrl.setRoot(HomePage);
-
-        }else{
-          
-          this.usuario.email = "";
-          this.usuario.senha = "";
-          this.showErrorAlert(this.resultado.menssage);
-
-        }
-        
-    }).catch(err => {      
-      console.log('Erro', err);
-      loading.dismiss();      
-    });
+    if (this.usuario.email !== '' && this.usuario.senha !== '' && this.usuario.tipo !== '' ) {
+      const loading = this.showLoading()
+      loading.present();
+  
+      
+      if (this.usuario.tipo == 'm') {
+        this.url = "medico/login";
+      } else {
+        this.url = "paciente/login";
+      }
+      this.provider.login(email, senha, this.url).then(result => {        
+          loading.dismiss();
+          this.resultado = result;
+          console.log(this.resultado);
+          if(this.resultado.result == true){
+            this.userLogged.setUsuario(result.user, this.usuario.tipo);
+            this.navCtrl.setRoot(HomePage);
+          }else{          
+            this.usuario.email = "";
+            this.usuario.senha = "";
+            this.showErrorAlert(this.resultado.menssage);
+          }        
+      }).catch(err => {      
+        console.log('Erro', err);
+        loading.dismiss();      
+      });
+    } else {
+      this.showErrorAlert('Dados inválidos!');
+    }
   }
    
   showLoading() {    
@@ -89,5 +88,9 @@ export class LoginPage {
 
   backPage() {
     this.navCtrl.pop();
+  }
+
+  isValid() {
+    return !(this.usuario.email !== '' && this.usuario.senha !== '' && this.usuario.tipo !== '');
   }
 }
