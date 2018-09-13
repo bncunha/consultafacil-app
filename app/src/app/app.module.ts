@@ -32,13 +32,6 @@ import { MedicoProvider } from '../providers/medico/medico';
 import { ConsultaProvider } from '../providers/consulta/consulta.provider';
 import { PerfilPacientePage } from '../pages/perfil-paciente/perfil-paciente';
 
-<<<<<<< HEAD
-
-=======
-
-
->>>>>>> master
-
 @NgModule({
   declarations: [
     MyApp,
