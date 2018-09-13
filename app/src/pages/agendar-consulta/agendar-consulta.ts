@@ -36,7 +36,7 @@ export class AgendarConsultaPage {
     private userLogged: UserLoggedProvider,
     private consultaService: ConsultaProvider) {
     this.model.medico = this.navParams.get("parametro");
-    this.model.especialidade = this.navParams.get("parametro").especialidade;
+    this.model.especialidade = this.navParams.get("parametro").esp;
     this.model.data = new Date((new Date()).valueOf() + 1000*3600*24); // pega o próximo dia
   }
 

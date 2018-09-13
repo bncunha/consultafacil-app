@@ -16,6 +16,7 @@ export class HomePage  {
   @Input() btnFooter: string;
 
   consultas = [];
+  backupConsultas = [];
 
   constructor(
     public platform: Platform, 
@@ -45,19 +46,35 @@ export class HomePage  {
     this.alert.showLoading();
     this.consultaProvider.getByPaciente(this.userLogged.usuario.id).then(result => {
       console.log('Consultas', result);
-      this.consultas = result;
+      this.consultas = result.reverse();
+      this.backupConsultas = this.consultas.slice();
       this.alert.hideLoading();
     }).catch(err => {
       console.log('Erro', err);
     });
   }
   
+  filtrarConsultas(opcaoConsulta) {
+    console.log('Filtrando...', opcaoConsulta, this.backupConsultas);
+    if (opcaoConsulta === -1) {
+      this.consultas = this.backupConsultas.slice();
+    } else {
+      this.consultas = this.backupConsultas.filter(consulta => consulta.situacao === opcaoConsulta);
+      console.log(this.consultas);
+    }
+
+  }
+
   abrirTela(lat,log){
     console.log(lat);
     console.log(log);
     //Vai abrir a tela desejada, onde a mesma deve ser importada
     this.navCtrl.push(LocalizacaoPage,{parametro1:lat, parametro2: log});
 
+  }
+
+  confirmCancel(consulta) {
+    this.alert.confirmAlert(this.cancelarConsulta.bind(this, consulta));
   }
 
   cancelarConsulta(consulta) {

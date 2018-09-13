@@ -18,6 +18,22 @@ export class AlertProvider {
 
   }
 
+  confirmAlert(callback, title?, subTitle?) {
+    const _title = title ? title : 'Tem certeza?';
+    const _subTitle = subTitle ?  subTitle : 'Você tem certeza que deseja realizar esta operação?';
+    this.alert = this.alertCtrl.create({
+      title: _title,
+      subTitle: _subTitle,
+      buttons: [{
+        text: 'Sim',
+        handler: callback
+      }, {
+        text: 'Não'
+      }],
+    });
+    this.alert.present();
+  }
+
   successAlert(callback, title?, subTitle?) {
     const _title = title ? title : 'Sucesso';
     const _subTitle = subTitle ?  subTitle : 'Operação realizada com sucesso!';

@@ -10,22 +10,38 @@
 
 <!-- apenas exemplo de como futuramente pode fica -->
 <ion-content padding>
+  <ion-item>
+    <ion-label>Filtrar consultas:</ion-label>
+    <ion-select (ionChange)="filtrarConsultas($event)">
+      <ion-option [value]="0">Agendadas</ion-option>
+      <ion-option [value]="2">Canceladas</ion-option>
+      <ion-option [value]="1">Realizadas</ion-option>
+      <ion-option [value]="-1">Todos</ion-option>
+    </ion-select>
+  </ion-item>
 
   <div *ngFor="let c of consultas">
   <ion-card>
-    <ion-card-header>
-      <ion-badge item-end> 
+    <ion-card-header class="header-card">
+      <ion-badge color="light" item-end> 
         <ion-icon name="calendar"></ion-icon> {{ c.data | date: 'dd/MM'}} {{ c.horario }}hrs
       </ion-badge>
+      <ion-badge color="light" class="consulta-cancelada" *ngIf="c.situacao === 2"> CONSULTA CANCELADA </ion-badge>
+      <ion-badge color="light" class="consulta-realizada" *ngIf="c.situacao === 1"> CONSULTA REALIZADA </ion-badge>
+      <ion-badge color="light" class="consulta-agendada" *ngIf="c.situacao === 0"> CONSULTA AGENDADA </ion-badge>
     </ion-card-header>
     <ion-card-content>
       <span class="title"> Consultório: </span> <span class="simple-text"> {{ c.consultorio?.nomeFantasia}} </span> <br/>
       <span class="title"> Médico(a): </span> <span class="simple-text"> Dr. {{ c.medico?.nome }} </span> <br/>
       <span class="title"> Especialidade: </span> <span class="simple-text"> {{ c.especialidade }} </span> <br/>
       <button ion-button round small (click)='abrirTela(-20.3184527 ,-40.4246079)' ><ion-icon name="md-map"></ion-icon> &nbsp; Localização</button>
-      <button ion-button round small *ngIf="c.situacao === 0" (click)="cancelarConsulta(c)" color="danger"><ion-icon name="md-close"></ion-icon> &nbsp; Cancelar</button>
+      <button ion-button round small *ngIf="c.situacao === 0" (click)="confirmCancel(c)" color="danger"><ion-icon name="md-close"></ion-icon> &nbsp; Cancelar</button>
     </ion-card-content>
   </ion-card>
   </div>
+
+  <ion-fab class="action-button">      
+    <button ion-fab (click)="carregarConsultasPaciente()"> <ion-icon name="refresh"></ion-icon> </button>
+  </ion-fab>  
 </ion-content>
 
