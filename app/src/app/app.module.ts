@@ -30,7 +30,14 @@ import { AlertProvider } from '../core/alert/alert';
 import { UserLoggedProvider } from '../providers/user-logged/user-logged';
 import { MedicoProvider } from '../providers/medico/medico';
 import { ConsultaProvider } from '../providers/consulta/consulta.provider';
+import { PerfilPacientePage } from '../pages/perfil-paciente/perfil-paciente';
 
+<<<<<<< HEAD
+
+=======
+
+
+>>>>>>> master
 
 @NgModule({
   declarations: [
@@ -45,7 +52,8 @@ import { ConsultaProvider } from '../providers/consulta/consulta.provider';
     ModalPage,
     CadastroMedicoPage,
     OpcaoCadastroPage,
-    InicioPage
+    InicioPage,
+    PerfilPacientePage
   ],
   imports: [
     HttpModule,
@@ -69,7 +77,8 @@ import { ConsultaProvider } from '../providers/consulta/consulta.provider';
     ModalPage,
     CadastroMedicoPage,
     OpcaoCadastroPage,
-    InicioPage
+    InicioPage,
+    PerfilPacientePage
   ],
   providers: [
     StatusBar,
